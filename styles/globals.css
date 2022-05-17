@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .container-main {
+    @apply container 
+    mx-auto 
+    px-4
+    sm:px-5
+    md:px-10
+    lg:px-16
+    xl:px-24
+    2xl:px-12
+    relative;
+  }
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  background-image: url("/assets/body-bg.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  font-family: "Manrope", sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
