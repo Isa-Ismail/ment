@@ -55,9 +55,11 @@ export default function Header() {
             <NavLink>About</NavLink>
           </NavItem>
           <NavItem>
-            <NavLinkLogin>
-              <NavBtnLogin>Login</NavBtnLogin>
-            </NavLinkLogin>
+            <Link href = '/login'>
+              <NavLinkLogin>
+                <NavBtnLogin>Login</NavBtnLogin>
+              </NavLinkLogin>
+            </Link>
           </NavItem>
         </NavMenu>
         <HamburgerIcon>
