@@ -9,14 +9,14 @@ const Mentors = () => {
   return (
     <div className='min-h-screen bg-white'>
         <div className='pt-[8rem] px-[8rem]'>
-            <div className='flex'>
+            <div className='md:flex'>
                 <DropdownSelect cat = 'Category'/>
                 <DropdownSelect cat = 'Expertise'/>
                 <DropdownSelect cat = 'Sort by'/>
                 <DropdownSelect cat = 'Rating'/>
             </div>
             <Divider></Divider>
-            <div className='pt-10'>
+            <div className='pt-[2rem]'>
                 <Grid container spacing={3}>
                     {mentors.map((mentor) => (
                         <>

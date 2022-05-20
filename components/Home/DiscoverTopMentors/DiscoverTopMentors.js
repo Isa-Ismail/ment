@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick.css";
 import tw from "tailwind-styled-components";
 import { mentors } from "../../../data/mentors";
 import MentorCard from "./MentorCard";
+import Link from "next/link";
 
 export default function DiscoverTopMentors() {
   const slider = useRef();
@@ -53,7 +54,7 @@ export default function DiscoverTopMentors() {
         <TopContainer>
           <Title>Discover Top Mentors</Title>
           <ExploreWithIndicator>
-            <ExploreButton>Explore All</ExploreButton>
+          <Link href ='/mentors'><ExploreButton>Explore All</ExploreButton></Link>
             <IndicatorContainer>
               <LeftArrow onClick={() => slider?.current?.slickPrev()}>
                 <ChevronLeftIcon className={indicatorArrowClasses} />

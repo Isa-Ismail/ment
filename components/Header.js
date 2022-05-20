@@ -2,7 +2,7 @@ import { ViewGridIcon } from "@heroicons/react/outline";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import tw from "tailwind-styled-components";
-
+import Link from "next/link";
 export default function Header() {
   const [navBgOnScroll, setNavBgOnScroll] = useState(false);
 
@@ -24,12 +24,14 @@ export default function Header() {
     <Wrapper $bg={navBgOnScroll}>
       <Container>
         <NavLogo>
-          <Image
-            src="/assets/logo/logo.svg"
-            objectFit="contain"
-            layout="fill"
-            alt="demo-image"
-          />
+          <Link href='/'>
+            <Image
+              src="/assets/logo/logo.svg"
+              objectFit="contain"
+              layout="fill"
+              alt="demo-image"
+            />
+          </Link>
         </NavLogo>
         <NavMenu>
           <NavItem>
@@ -95,6 +97,7 @@ const NavLogo = tw.div`
   w-40
   h-12
   relative
+  cursor-pointer
 `;
 
 const NavMenu = tw.ul`
