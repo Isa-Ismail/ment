@@ -2,12 +2,10 @@ import React from 'react'
 import Layout from '../components/Layout'
 import Signup from '../components/Signup/Signup'
 
-const RegisterPage = () => {
+export default function signup() {
   return (
     <Layout>
-        <Signup />
+        <Signup/>
     </Layout>
   )
 }
-
-export default RegisterPage
