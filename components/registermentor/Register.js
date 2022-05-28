@@ -55,10 +55,11 @@ const Register = () => {
 
   return (
 
-    //Left side of the steps
     <div className={wrapper}>
         <div className={container}>
-          <div className="flex flex-col md:space-y-4">
+
+          {/* Left side */}
+          <div className="md:space-y-4">
             <h1 className="font-bold border-[1px] border-cyan-600 p-1 rounded-md">Session Details</h1>
             <h1>Experience</h1>
             <h1>Education</h1>
@@ -286,7 +287,7 @@ const Register = () => {
           {steps===4&&(
           <div className="flex flex-col md:pl-10 space-y-4">
           <a className='font-extralight'>step {steps} of 6</a>
-            <h1>How you would introduce yourself.</h1><br />
+            <h1>How would you introduce yourself?</h1><br />
             <div className="flex flex-col space-y-2">
               <h1>story *</h1>
               <textarea className='border-[1px] border-mentmeBlue px-3 py-3 h-[10rem] rounded-md' 
@@ -359,6 +360,6 @@ const Register = () => {
 
 export default Register
 
-const wrapper = 'min-h-screen bg-white'
-const container = 'pt-[8rem] md:px-[8rem] ml-[6rem] md:flex justify-start space-x-[2rem] items-start divide-x'
-const input = 'border-[1px] w-[20rem] border-black px-3 py-2 rounded-md'
+const wrapper = 'min-h-screen mb-[2rem]'
+const container = 'pt-[8rem] md:px-[10rem] md:space-x-[5rem] md:ml-[6rem] md:flex justify-start space-x-[2rem] space-y-2 items-start divide-x'
+const input = 'bg-mentmeblue border-[1px] w-[20rem] border-mentmeBlue px-3 py-2 rounded-md'
