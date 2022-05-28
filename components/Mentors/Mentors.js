@@ -1,35 +1,90 @@
-import React from 'react'
-import DropdownSelect from './DropdownSelect'
-import Divider from '@mui/material/Divider'
-import MentorCard from '../Home/DiscoverTopMentors/MentorCard'
-import { mentors } from '../../data/mentors'
-import {Grid} from '@mui/material'
+import React, { useState } from "react";
+import tw from "tailwind-styled-components";
+import { mentors } from "../../data/mentors";
+import MentorCard from "../Shared/MentorCard";
+import MentorsDropDown from "./MentorsDropDown";
 
-const Mentors = () => {
+export default function Mentors() {
+  const [showDropDownMenu, setShowDropDownMenu] = useState({
+    showCategoryDropDownMenu: false,
+    showExpertiseDropDownMenu: false,
+  });
+
+  const handleShowDropDownMenu = (obj) => {
+    setShowDropDownMenu((prevState) => ({ ...prevState, ...obj }));
+  };
+
   return (
-    <div className='min-h-screen bg-white'>
-        <div className='pt-[8rem] px-[8rem]'>
-            <div className='md:flex'>
-                <DropdownSelect cat = 'Category'/>
-                <DropdownSelect cat = 'Expertise'/>
-                <DropdownSelect cat = 'Sort by'/>
-                <DropdownSelect cat = 'Rating'/>
-            </div>
-            <Divider></Divider>
-            <div className='pt-[2rem]'>
-                <Grid container spacing={3}>
-                    {mentors.map((mentor) => (
-                        <>
-                        <Grid item md = {3}>
-                            <MentorCard key={mentor.id} mentor={mentor} />
-                        </Grid>
-                        </>
-                    ))}
-                </Grid>
-            </div>
-        </div>
-    </div>
-  )
+    <Wrapper>
+      <Container>
+        <MentorsDropDownContainer>
+          <MentorsDropDown
+            handleShowDropDownMenu={handleShowDropDownMenu}
+            showDropDownMenu={showDropDownMenu}
+            menuName="Category"
+          />
+          <MentorsDropDown
+            handleShowDropDownMenu={handleShowDropDownMenu}
+            showDropDownMenu={showDropDownMenu}
+            menuName="Expertise"
+          />
+          <MentorsDropDown
+            handleShowDropDownMenu={handleShowDropDownMenu}
+            showDropDownMenu={showDropDownMenu}
+            menuName="Sort By"
+          />
+          <MentorsDropDown
+            handleShowDropDownMenu={handleShowDropDownMenu}
+            showDropDownMenu={showDropDownMenu}
+            menuName="Rating"
+          />
+        </MentorsDropDownContainer>
+        <ContainerInner>
+          {mentors.map((mentor, i) => (
+            <MentorCardContainer key={mentor.id} $index={i}>
+              <MentorCard mentor={mentor} />
+            </MentorCardContainer>
+          ))}
+        </ContainerInner>
+      </Container>
+    </Wrapper>
+  );
 }
 
-export default Mentors
+// Tailwind styled components
+
+const Wrapper = tw.div`
+  min-h-screen
+  py-40
+`;
+
+const MentorsDropDownContainer = tw.div`
+  pl-3
+  2xl:pl-5
+  flex
+  space-x-5
+  mb-16
+`;
+
+const Container = tw.div`
+  container-main
+`;
+
+const ContainerInner = tw.div`
+  w-full
+  flex
+  flex-wrap
+  justify-center
+`;
+
+const MentorCardContainer = tw.div`
+  sm:w-1/2
+  lg:w-1/3
+  xl:w-1/4
+  ${(p) => p.$index > 0 && "mt-16"}
+  ${(p) => p.$index === 1 && "sm:mt-0"}
+  ${(p) => p.$index > 1 && "sm:mt-16"}
+  ${(p) => p.$index === 2 && "lg:mt-0"}
+  ${(p) => p.$index > 2 && "lg:mt-16"}
+  ${(p) => p.$index === 3 && "xl:mt-0"}
+`;

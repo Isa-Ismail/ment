@@ -55,7 +55,7 @@ export default function Header() {
             <NavLink>About</NavLink>
           </NavItem>
           <NavItem>
-            <Link href = '/login'>
+            <Link href = '/signup'>
               <NavLinkLogin>
                 <NavBtnLogin>Login</NavBtnLogin>
               </NavLinkLogin>
