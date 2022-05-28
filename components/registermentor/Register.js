@@ -87,7 +87,7 @@ const Register = () => {
             {/* category */}
 
             {/* expertise */}
-            <div className="flex flex-col space-y-4">
+            <div className="flex flex-col space-y-1">
               <h1>Add your expertise within the topic. *</h1>
               <select name='expertise' onChange={handChange} value={form.expertise} className='rounded-md border-[1px] cursor-pointer px-[1rem] py-[.5rem] border-cyan-700' id="standard-select">
                 <option value="Select">select</option>
@@ -99,7 +99,7 @@ const Register = () => {
             {/* expertise */}
 
             {/* level of expertise */}
-            <div className="flex flex-col space-y-4">
+            <div className="flex flex-col space-y-1">
               <h1>What is your level of expertise? *</h1>
               <select name='level' onChange={handChange} value={form.level} className='rounded-md border-[1px] cursor-pointer px-[1rem] py-[.5rem] border-cyan-700' id="standard-select">
                 <option value="Select">select</option>
@@ -111,7 +111,7 @@ const Register = () => {
             {/* level of expertise */}
 
             {/* Credits */}
-            <div className="flex flex-col space-y-4">
+            <div className="flex flex-col space-y-1">
               <h1>Select credits *</h1>
               <select name='credits' onChange={handChange} value={form.credits} className='rounded-md border-[1px] cursor-pointer px-[1rem] py-[.5rem] border-cyan-700' id="standard-select">
                 <option value="Select">select</option>
@@ -138,7 +138,7 @@ const Register = () => {
             <div className="flex flex-col space-y-2">
               {/* company */}
               <h1>Company *</h1>
-              <input className='border-[1px] border-mentmeBlue px-3 py-3 rounded-md' 
+              <input className={input} 
               name='company'
               value={exp.company}
               onChange={handExp}
@@ -147,7 +147,7 @@ const Register = () => {
 
               {/* title */}
               <h1>Your title *</h1>
-              <input className='border-[1px] border-mentmeBlue px-3 py-3 rounded-md' 
+              <input className={input} 
               name='title'
               value={exp.title}
               onChange={handExp}
@@ -156,7 +156,7 @@ const Register = () => {
 
               {/* start */}
               <h1>Start date *</h1>
-              <input className='border-[1px] border-mentmeBlue px-3 py-3 rounded-md' 
+              <input className={input}  
               name='start'
               value={exp.start}
               onChange={handExp}
@@ -165,7 +165,7 @@ const Register = () => {
 
               {/* end */}
               <h1>End date *</h1>
-              <input className='border-[1px] border-mentmeBlue px-3 py-3 rounded-md' 
+              <input className={input}  
               name='end'
               value={exp.end}
               onChange={handExp}
@@ -215,7 +215,7 @@ const Register = () => {
 
               {/* school */}
               <h1>School/Platform *</h1>
-              <input className='border-[1px] border-mentmeBlue px-3 py-3 rounded-md' 
+              <input className={input} 
               name='school'
               value={education.school}
               onChange={handEdu}
@@ -224,7 +224,7 @@ const Register = () => {
 
               {/* degree */}
               <h1>Your degree *</h1>
-              <input className='border-[1px] border-mentmeBlue px-3 py-3 rounded-md' 
+              <input className={input} 
               name='degree'
               value={education.degree}
               onChange={handEdu}
@@ -233,7 +233,7 @@ const Register = () => {
 
               {/* start */}
               <h1>Start date *</h1>
-              <input className='border-[1px] border-mentmeBlue px-3 py-3 rounded-md' 
+              <input className={input} 
               name='start'
               value={education.start}
               onChange={handEdu}
@@ -242,13 +242,13 @@ const Register = () => {
 
               {/* end */}
               <h1>End date *</h1>
-              <input className='border-[1px] border-mentmeBlue px-3 py-3 rounded-md' 
+              <input className={input} 
               name='end'
               value={education.end}
               onChange={handEdu}
               />
               {/* end */}
-              
+
               <button
                 disabled={!(education.school&&education.degree&&education.start&&education.end)}
                 onClick={()=>{
@@ -361,3 +361,4 @@ export default Register
 
 const wrapper = 'min-h-screen bg-white'
 const container = 'pt-[8rem] md:px-[8rem] ml-[6rem] md:flex justify-start space-x-[2rem] items-start divide-x'
+const input = 'border-[1px] w-[20rem] border-black px-3 py-2 rounded-md'
