@@ -1,6 +1,7 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 
 const Register = () => {
+
   const [steps, setSteps] = useState(1)
   
   const [exp, setExperience] = useState({
@@ -28,7 +29,9 @@ const Register = () => {
     bio:'',
     linkedIn:'',
     facebook: '',
-    website: ''
+    website: '',
+    dp: null,
+    gallery: '',
   })
 
 
@@ -46,7 +49,14 @@ const Register = () => {
   }
 
   const plusStep = (e) => {
-    if(steps>=1&&steps<=6) setSteps(steps+1)
+    if(steps>=1&&steps<=6) {
+      setSteps(steps+1)
+      window.scroll({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+      })
+    }
   }
 
   const backStep = (e) => {
@@ -124,8 +134,8 @@ const Register = () => {
             {/* Credits */}
 
             <br />
-            <div className="flex space-x-[20rem] justify-end">
-            <button disabled={!(form.category&&form.expertise&&form.level&&form.credits)} className='bg-mentmeBlue px-4 py-1 rounded-md text-white' onClick = {plusStep}>Next</button>
+            <div className={buttonContainer}>
+            <button disabled={!(form.category&&form.expertise&&form.level&&form.credits)} className={button} onClick = {plusStep}>Continue</button>
             </div>
           
           </div>
@@ -187,9 +197,9 @@ const Register = () => {
             </div>
           
             <br />
-            <div className="flex space-x-[20rem]">
+            <div className={buttonContainer}>
             <h1 className='cursor-pointer' onClick = {backStep}> {'<'} Back</h1>
-            <button disabled={!(exp.company&&exp.title&&exp.start&&exp.end)} className='bg-mentmeBlue px-4 py-1 rounded-md text-white'
+            <button disabled={!(exp.company&&exp.title&&exp.start&&exp.end)} className={button}
              
              onClick = {() =>{ 
                
@@ -199,9 +209,14 @@ const Register = () => {
                 start:'',
                 end:''})
                 setSteps(steps+1)
+                window.scroll({
+                  top: 0,
+                  left: 0,
+                  behavior: 'smooth'
+                })
               }}
                 >
-                Next
+                Continue
                 </button>
             
             </div>
@@ -263,9 +278,9 @@ const Register = () => {
             </div>
           
             <br />
-            <div className="flex space-x-[20rem]">
+            <div className={buttonContainer}>
             <h1 className='cursor-pointer' onClick = {backStep}> {'<'} Back</h1>
-            <button disabled={!(education.school&&education.degree&&education.start&&education.end)} className='bg-mentmeBlue px-4 py-1 rounded-md text-white'
+            <button disabled={!(education.school&&education.degree&&education.start&&education.end)} className={button}
              
              onClick = {() =>{ 
                
@@ -275,15 +290,22 @@ const Register = () => {
                 start:'',
                 end:''})
                 setSteps(steps+1)
+                window.scroll({
+                  top: 0,
+                  left: 0,
+                  behavior: 'smooth'
+                })
               }}
                 >
-                Next
+                Continue
                 </button>
             
             </div>
           </div>
           )}
           
+          {/* Mentor introduction here */}
+
           {steps===4&&(
           <div className="flex flex-col md:pl-10 space-y-4">
           <a className='font-extralight'>step {steps} of 6</a>
@@ -325,31 +347,59 @@ const Register = () => {
             </div>
           
             <br />
-            <div className="flex space-x-[20rem]">
+            <div className={buttonContainer}>
             <h1 className='cursor-pointer' onClick = {backStep}>{'<'} Back</h1>
-            <button disabled={!(form.story&&form.bio&&form.linkedIn&&form.website&&form.website)} className='bg-mentmeBlue px-4 py-1 rounded-md text-white' onClick = {plusStep}>Next</button>
+            <button disabled={!(form.story&&form.bio&&form.linkedIn&&form.website&&form.website)} className={button} onClick = {plusStep}>Continue</button>
             </div>
           </div>
           )}
           
+
+          {/* Image upload here */}
+
           {steps===5&&(
           <div className="flex flex-col md:pl-10 space-y-4">
           <a className='font-extralight'>step {steps} of 6</a>
             <h1>Add some photos so mentees can know you better.</h1><br />
             <div className="flex flex-col space-y-2">
-              <h1>Dispay Picture *</h1>
-              <textarea className='border-[1px] border-mentmeBlue px-3 py-3 h-[10rem] rounded-md' 
-              name='story'
-              value={form.story}
+              <h1>Put a face to your name *</h1>
+              <input 
+              type='image'
+              placeholder='upload your image here'
+              className='border-[1px] border-mentmeBlue h-[12rem] w-[10rem] rounded-md' 
+              name='dp'
+              value={form.dp}
               onChange={handChange}
               />
+
+              <h1>Upload some photos to show in your gallery *</h1>
+              <input 
+              type='image'
+              placeholder='upload your image here'
+              className='border-[1px] border-mentmeBlue h-[10rem] w-[12rem] rounded-md' 
+              name='dp'
+              value={form.dp}
+              onChange={handChange}
+              />
+              <button>
+                + Add more photos
+              </button>
+              
+              <div className={buttonContainer}>
+                <h1 className='cursor-pointer' onClick = {backStep}>{'<'} Back</h1>
+                <button className={button} onClick = {plusStep}>Continue</button>
+              </div>
+
             </div>
           </div>
           )}
           
           {steps===6&&(
             <div>
-            
+              <div className={buttonContainer}>
+                <h1 className='cursor-pointer' onClick = {backStep}>{'<'} Back</h1>
+                <button className={button} onClick = {plusStep}>Continue</button>
+              </div>
             </div>
           )}
             
@@ -363,3 +413,5 @@ export default Register
 const wrapper = 'min-h-screen mb-[2rem]'
 const container = 'pt-[8rem] md:px-[10rem] md:space-x-[5rem] md:ml-[6rem] md:flex justify-start space-x-[2rem] space-y-2 items-start divide-x'
 const input = 'bg-mentmeblue border-[1px] w-[20rem] border-mentmeBlue px-3 py-2 rounded-md'
+const button = 'bg-mentmeBlue px-4 py-3 rounded-md text-white'
+const buttonContainer = 'flex space-x-[15rem] justify-end items-center'
