@@ -42,9 +42,11 @@ export default function Header() {
               </NavBtnMentorCat>
             </NavLink>
           </NavItem>
-          <NavItem>
-            <NavLink>Become a mentor</NavLink>
-          </NavItem>
+          <Link href = '/registermentor'>
+            <NavItem>
+              <NavLink>Become a mentor</NavLink>
+            </NavItem>
+          </Link>
           <NavItem>
             <NavLink>Pricing</NavLink>
           </NavItem>
@@ -118,7 +120,9 @@ const HamburgerIcon = tw.div`
   cursor-pointer
 `;
 
-const NavItem = tw.li``;
+const NavItem = tw.li`
+  cursor-pointer
+`;
 
 const NavLink = tw.a`
   text-lg
